@@ -1,0 +1,12 @@
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === "complete" && tab.url) {
+    //const queryParameters = tab.url.split("?")[1];
+    //const urlParameters = new URLSearchParams(queryParameters);
+    //console.log("Sending message with videoId:", urlParameters.get("v"));
+
+    chrome.tabs.sendMessage(tabId, {
+      type: "NEW",
+      url: tab.url,
+    });
+  }
+});
