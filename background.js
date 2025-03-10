@@ -13,9 +13,11 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 });
 
 chrome.webNavigation.onBeforeNavigate.addListener((details) => {
-  console.log(details.url);
-  if (isIPAddress(details.url)) {
-    //openPanelWindow(details.url);
+  if (!expludeURLFromChecking(details.url)) {
+    console.log(details.url);
+    if (isIPAddress(details.url)) {
+      openPanelWindow(details.url);
+    }
   }
 });
 
@@ -34,4 +36,13 @@ function openPanelWindow(url) {
       panelWindowId = window.id;
     }
   );
+}
+
+function expludeURLFromChecking(url) {
+  const domain = new URL(url).hostname;
+  if (domain.includes("google") || url.includes("about:blank")) {
+    return true;
+  }
+
+  return false;
 }
