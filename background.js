@@ -1,10 +1,10 @@
 import { isIPAddress } from "./phishingFeatures/IPAdressFeat.js";
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (tab.url) {
-    //const queryParameters = tab.url.split("?")[1];
-    //const urlParameters = new URLSearchParams(queryParameters);
-    //console.log("Sending message with videoId:", urlParameters.get("v"));
-
+  if (
+    changeInfo.status === "complete" &&
+    tab.url &&
+    tab.url.includes("https://mail.google.com/mail/u/0/#inbox/")
+  ) {
     chrome.tabs.sendMessage(tabId, {
       type: "NEW",
       url: tab.url,
