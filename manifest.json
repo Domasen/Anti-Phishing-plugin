@@ -21,7 +21,8 @@
         "assets/bookmark.png",
         "assets/play.png",
         "assets/delete.png",
-        "assets/save.png"
+        "assets/save.png",
+        "info.html"
       ],
       "matches": ["https://*.google.com/*", "https://mail.google.com/*"]
     }

@@ -46,3 +46,14 @@ function expludeURLFromChecking(url) {
 
   return false;
 }
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "openPopup") {
+    chrome.windows.create({
+      url: chrome.runtime.getURL(message.file),
+      type: "popup",
+      width: 600,
+      height: 400,
+    });
+  }
+});

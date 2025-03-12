@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phishing Warning</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        width: 300px;
+        padding: 10px;
+      }
+      .warning {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Phishing Alert</h2>
+    <p class="warning">This link might be unsafe!</p>
+    <button id="closePopup">Close</button>
+
+    <script>
+      document.getElementById("closePopup").addEventListener("click", () => {
+        window.close();
+      });
+    </script>
+  </body>
+</html>
